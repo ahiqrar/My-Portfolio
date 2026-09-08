@@ -1,0 +1,103 @@
+.footer {
+  background-color: var(--bg-secondary);
+  border-top: 1px solid var(--border-color);
+  padding: 4rem 0 2rem;
+  margin-top: auto;
+}
+
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.footerContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .footerContent {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+.brand span {
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.tagline {
+  color: var(--text-muted);
+  max-width: 300px;
+}
+
+.socials {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.socials a {
+  color: var(--text-muted);
+  background: var(--bg-tertiary);
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.socials a:hover {
+  color: white;
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4);
+}
+
+.footerBottom {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+@media (min-width: 768px) {
+  .footerBottom {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.backToTop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.backToTop:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}

@@ -1,0 +1,84 @@
+.educationSection {
+  background-color: transparent;
+}
+
+.educationGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 992px) {
+  .educationGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.columnHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.icon {
+  color: var(--accent-color);
+}
+
+.columnHeader h3 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.eduCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.degree {
+  font-size: 1.25rem;
+  color: var(--text-color);
+}
+
+.institution {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.duration {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.certCard {
+  height: 100%;
+}
+
+.certList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.certList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+.check {
+  color: var(--secondary-color);
+  font-weight: bold;
+}

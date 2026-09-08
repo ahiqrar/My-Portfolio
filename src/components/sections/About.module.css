@@ -1,0 +1,90 @@
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.highlightItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.iconWrapper {
+  background: rgba(59, 130, 246, 0.1);
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  color: var(--primary-color);
+}
+
+.highlightItem h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+  color: var(--text-color);
+}
+
+.highlightItem p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.imageContainer {
+  position: relative;
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 1rem;
+  padding: 1rem;
+  background: linear-gradient(145deg, rgba(30,30,30,0.8), rgba(15,15,15,0.9));
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.05);
+  transform: perspective(1000px) rotateY(-5deg) rotateX(5deg);
+  transition: transform 0.5s ease;
+}
+
+.imageWrapper:hover {
+  transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+}
+
+.imageWrapper::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  z-index: -1;
+  border-radius: 1.1rem;
+  opacity: 0.3;
+}
+
+.profileImage {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4/5;
+}
