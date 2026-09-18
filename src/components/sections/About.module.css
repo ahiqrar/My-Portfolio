@@ -1,15 +1,16 @@
 .aboutGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  gap: clamp(2rem, 4vw, 4rem);
   align-items: center;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1024px) {
   .aboutGrid {
     grid-template-columns: 1fr;
+    gap: 2.5rem;
   }
 }
 
@@ -30,7 +31,7 @@
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   color: #ffffff;
   margin-bottom: 0.5rem;
 }
@@ -43,7 +44,7 @@
 }
 
 .description {
-  font-size: 1.05rem;
+  font-size: clamp(1rem, 2vw, 1.05rem);
   color: #a1a1aa;
   margin-bottom: 2rem;
   line-height: 1.8;
@@ -51,9 +52,15 @@
 }
 
 .projectsContainer {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .projectsContainer {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 .projectCard {
@@ -157,6 +164,12 @@
   justify-content: center;
 }
 
+@media (max-width: 1024px) {
+  .imageContainer {
+    min-height: auto;
+  }
+}
+
 .imageWrapper {
   position: relative;
   width: 100%;
@@ -170,8 +183,10 @@
   transition: transform 0.5s ease;
 }
 
-.imageWrapper:hover {
-  transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+@media (hover: hover) and (pointer: fine) {
+  .imageWrapper:hover {
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+  }
 }
 
 .imageWrapper::before {

@@ -13,7 +13,7 @@
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   color: #ffffff;
   margin-bottom: 0.5rem;
 }
@@ -27,7 +27,7 @@
 }
 
 .headerDescription {
-  font-size: 1.05rem;
+  font-size: clamp(1rem, 2vw, 1.05rem);
   color: #a1a1aa;
   margin: 0;
 }
@@ -35,21 +35,24 @@
 .skillsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
+  gap: clamp(1rem, 3vw, 1.5rem);
 }
 
 .skillCard {
   background-color: #0d0d0d;
   border: 1px solid #1f1f1f;
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: clamp(1.25rem, 3vw, 1.5rem);
   display: flex;
   flex-direction: column;
   transition: border-color 0.2s ease;
+  height: 100%;
 }
 
-.skillCard:hover {
-  border-color: var(--primary-color);
+@media (hover: hover) and (pointer: fine) {
+  .skillCard:hover {
+    border-color: var(--primary-color);
+  }
 }
 
 .cardHeader {
@@ -71,7 +74,7 @@
 
 .categoryTitle {
   color: #ffffff;
-  font-size: 1.15rem;
+  font-size: clamp(1.05rem, 2vw, 1.15rem);
   font-weight: 600;
   margin: 0;
 }
@@ -96,7 +99,7 @@
   color: #d4d4d8;
   background-color: #18181b;
   border: 1px solid #27272a;
-  font-size: 0.85rem;
+  font-size: clamp(0.8rem, 1.5vw, 0.85rem);
   padding: 0.4rem 0.8rem;
   border-radius: 9999px;
   font-weight: 500;
@@ -106,8 +109,10 @@
   transition: border-color 0.2s ease;
 }
 
-.pill:hover {
-  border-color: #52525b;
+@media (hover: hover) and (pointer: fine) {
+  .pill:hover {
+    border-color: #52525b;
+  }
 }
 
 .skillLogo {

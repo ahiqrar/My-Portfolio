@@ -13,7 +13,7 @@
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   color: #ffffff;
   margin-bottom: 0.5rem;
 }
@@ -29,7 +29,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: clamp(2rem, 4vw, 4rem);
 }
 
 /* --- Left Column: Info --- */
@@ -74,7 +74,7 @@
 
 .introText {
   color: #a1a1aa;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2vw, 1.1rem);
   line-height: 1.7;
   margin-bottom: 2.5rem;
 }
@@ -98,8 +98,10 @@
   text-decoration: none;
 }
 
-a.contactRow:hover {
-  border-color: var(--primary-color);
+@media (hover: hover) and (pointer: fine) {
+  a.contactRow:hover {
+    border-color: var(--primary-color);
+  }
 }
 
 .iconWrapper {
@@ -147,8 +149,8 @@ a.contactRow:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   border-radius: 6px;
   color: #71717a;
   background-color: transparent;
@@ -156,9 +158,11 @@ a.contactRow:hover {
   position: relative;
 }
 
-.copyBtn:hover {
-  color: #ffffff;
-  background-color: #1f1f1f;
+@media (hover: hover) and (pointer: fine) {
+  .copyBtn:hover {
+    color: #ffffff;
+    background-color: #1f1f1f;
+  }
 }
 
 .successIcon {
@@ -186,9 +190,11 @@ a.contactRow:hover {
   transition: all 0.2s ease;
 }
 
-a.contactRow:hover .hoverArrow {
-  opacity: 1;
-  transform: translateX(0);
+@media (hover: hover) and (pointer: fine) {
+  a.contactRow:hover .hoverArrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .socialRow {
@@ -209,11 +215,12 @@ a.contactRow:hover .hoverArrow {
   transition: all 0.2s ease;
 }
 
-.socialIcon:hover {
-  color: var(--primary-color);
-  border-color: var(--primary-color);
+@media (hover: hover) and (pointer: fine) {
+  .socialIcon:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
 }
-
 
 /* --- Right Column: Form --- */
 .formColumn {
@@ -224,7 +231,7 @@ a.contactRow:hover .hoverArrow {
   background-color: #0a0a0a;
   border: 1px solid #1f1f1f;
   border-radius: 12px;
-  padding: 2rem;
+  padding: clamp(1.5rem, 4vw, 2rem);
   width: 100%;
 }
 
@@ -261,7 +268,7 @@ a.contactRow:hover .hoverArrow {
   border-radius: 8px;
   padding: 0.75rem 1rem;
   font-family: inherit;
-  font-size: 0.95rem;
+  font-size: 16px; /* prevent iOS zoom */
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -335,10 +342,13 @@ a.contactRow:hover .hoverArrow {
   cursor: pointer;
   transition: background-color 0.2s ease, opacity 0.2s ease;
   margin-top: 0.5rem;
+  min-height: 48px; /* Touch target */
 }
 
-.submitBtn:hover:not(:disabled) {
-  background-color: #2563eb;
+@media (hover: hover) and (pointer: fine) {
+  .submitBtn:hover:not(:disabled) {
+    background-color: #2563eb;
+  }
 }
 
 .submitBtn:disabled {
@@ -409,14 +419,17 @@ a.contactRow:hover .hoverArrow {
   font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.2s ease;
+  min-height: 44px;
 }
 
-.resetBtn:hover {
-  background-color: rgba(59, 130, 246, 0.1);
+@media (hover: hover) and (pointer: fine) {
+  .resetBtn:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+  }
 }
 
 /* Responsive */
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .grid {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -424,10 +437,6 @@ a.contactRow:hover .hoverArrow {
 }
 
 @media (max-width: 640px) {
-  .formCard {
-    padding: 1.5rem;
-  }
-  
   .rowActions {
     flex-direction: column;
     gap: 0.25rem;

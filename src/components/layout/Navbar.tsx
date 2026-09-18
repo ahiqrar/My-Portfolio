@@ -45,6 +45,15 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileMenuOpen]);
+
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     setMobileMenuOpen(false);
@@ -76,18 +85,21 @@ const Navbar = () => {
         <button 
           className="navbar-toggler border-0 shadow-none text-white p-0" 
           type="button" 
+          aria-label="Toggle navigation menu"
+          aria-expanded={mobileMenuOpen}
+          aria-controls="navbar-menu"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         >
           {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
         {/* Navbar Links & Socials */}
-        <div className={`collapse navbar-collapse ${mobileMenuOpen ? 'show mt-4' : ''}`}>
+        <div id="navbar-menu" className={`collapse navbar-collapse ${mobileMenuOpen ? 'show mt-4' : ''}`}>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0 text-center gap-2 gap-lg-2">
             {navLinks.map((link: any) => (
               <li className="nav-item" key={link.id}>
                 <a 
-                  className={`nav-link fw-medium px-3 rounded-pill ${activeSection === link.id ? 'text-white' : 'text-white-50'}`}
+                  className={`nav-link fw-medium px-3 py-3 py-lg-2 rounded-pill ${activeSection === link.id ? 'text-white' : 'text-white-50'}`}
                   style={{ cursor: 'pointer', transition: 'all 0.3s', backgroundColor: activeSection === link.id ? 'rgba(255, 255, 255, 0.1)' : 'transparent' }}
                   href={link.id === SectionId.Home ? '/' : `/${link.id}`}
                   onClick={(e) => scrollToSection(e, link.id)}

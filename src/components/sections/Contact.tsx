@@ -12,8 +12,8 @@ const contactConfig = {
     github: "https://github.com/ahiqrar",
     linkedin: "https://linkedin.com/in/iqrar-ahmed-68018226b"
   },
-  // 🔗 Add your Formspree endpoint ID here (e.g., https://formspree.io/f/YOUR_ENDPOINT_ID)
-  formspreeEndpoint: "https://formspree.io/f/placeholder",
+  // 🔗 Using Vite environment variable for security, fallback to placeholder if not set
+  formspreeEndpoint: import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/placeholder",
   maxMessageLength: 1000
 };
 
@@ -44,17 +44,31 @@ const Contact = () => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
+  const sanitizeInput = (val: string) => val.replace(/[\x00-\x1F\x7F]/g, '');
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
+    const sanitizedValue = sanitizeInput(value);
     
     // Clear error when user types
     if (errors[name as keyof typeof errors]) {
       setErrors({ ...errors, [name]: '' });
     }
 
-    if (name === 'message' && value.length > contactConfig.maxMessageLength) return;
+    if (name === 'message' && sanitizedValue.length > contactConfig.maxMessageLength) return;
     
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]: sanitizedValue });
+  };
+
+  // Obfuscate contact methods from basic scrapers
+  const handleEmailClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.location.href = `mailto:${contactConfig.email}`;
+  };
+
+  const handlePhoneClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.location.href = `tel:${contactConfig.phone}`;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -145,13 +159,16 @@ const Contact = () => {
             <div className={styles.contactCards}>
               
               {/* Email Row */}
-              <a href={`mailto:${contactConfig.email}`} className={styles.contactRow}>
+              <a href="#" onClick={handleEmailClick} className={styles.contactRow}>
                 <div className={styles.iconWrapper}>
                   <Mail size={20} />
                 </div>
                 <div className={styles.rowContent}>
                   <span className={styles.rowLabel}>Email</span>
-                  <span className={styles.rowValue}>{contactConfig.email}</span>
+                  <span className={styles.rowValue}>
+                    {/* Visual obfuscation technique for basic scrapers */}
+                    {contactConfig.email.split('@')[0]}<span style={{display: 'none'}}>hidden</span>@{contactConfig.email.split('@')[1]}
+                  </span>
                 </div>
                 <div className={styles.rowActions}>
                   <button 
@@ -167,7 +184,7 @@ const Contact = () => {
               </a>
 
               {/* Phone Row */}
-              <a href={`tel:${contactConfig.phone}`} className={styles.contactRow}>
+              <a href="#" onClick={handlePhoneClick} className={styles.contactRow}>
                 <div className={styles.iconWrapper}>
                   <Phone size={20} />
                 </div>
@@ -247,6 +264,7 @@ const Contact = () => {
                       value={formData.name} 
                       onChange={handleInputChange} 
                       placeholder="Your full name"
+                      maxLength={100}
                       className={errors.name ? styles.inputError : ''}
                       aria-describedby={errors.name ? "name-error" : undefined}
                     />
@@ -262,6 +280,7 @@ const Contact = () => {
                       value={formData.email} 
                       onChange={handleInputChange} 
                       placeholder="name@company.com"
+                      maxLength={254}
                       className={errors.email ? styles.inputError : ''}
                       aria-describedby={errors.email ? "email-error" : undefined}
                     />
@@ -277,6 +296,7 @@ const Contact = () => {
                       value={formData.subject} 
                       onChange={handleInputChange} 
                       placeholder="What is this regarding?"
+                      maxLength={100}
                     />
                   </div>
 
@@ -292,6 +312,7 @@ const Contact = () => {
                       value={formData.message} 
                       onChange={handleInputChange} 
                       placeholder="Tell me about your project or opportunity..."
+                      maxLength={contactConfig.maxMessageLength}
                       className={errors.message ? styles.inputError : ''}
                       aria-describedby={errors.message ? "message-error" : undefined}
                     ></textarea>
@@ -309,6 +330,9 @@ const Contact = () => {
                       <>Send Message <Send size={18} /></>
                     )}
                   </button>
+                  <p style={{ fontSize: '0.75rem', color: '#71717a', textAlign: 'center', marginTop: '1rem', margin: 0 }}>
+                    Your data is securely transmitted and will only be used to respond to your inquiry.
+                  </p>
                 </form>
               )}
             </div>

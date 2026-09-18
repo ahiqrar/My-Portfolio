@@ -13,7 +13,7 @@
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   color: #ffffff;
   margin-bottom: 0.5rem;
 }
@@ -29,7 +29,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: clamp(1.5rem, 4vw, 2rem);
   align-items: stretch;
 }
 
@@ -37,14 +37,17 @@
   background-color: #0d0d0d;
   border: 1px solid #1f1f1f;
   border-radius: 12px;
-  padding: 1.75rem;
+  padding: clamp(1.25rem, 4vw, 1.75rem);
   display: flex;
   flex-direction: column;
   transition: border-color 0.2s ease;
+  height: 100%;
 }
 
-.card:hover {
-  border-color: var(--primary-color);
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    border-color: var(--primary-color);
+  }
 }
 
 .cardHeader {
@@ -66,7 +69,7 @@
 
 .cardTitle {
   color: #ffffff;
-  font-size: 1.25rem;
+  font-size: clamp(1.1rem, 3vw, 1.25rem);
   font-weight: 600;
   margin: 0;
 }
@@ -86,7 +89,7 @@
 
 .degree {
   color: #ffffff;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2vw, 1.1rem);
   font-weight: 600;
   margin: 0 0 0.25rem 0;
 }
@@ -130,7 +133,9 @@
 .certRow {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   padding: 1rem 0;
   border-bottom: 1px solid #1f1f1f;
 }
@@ -148,6 +153,7 @@
   color: #ffffff;
   font-size: 0.95rem;
   font-weight: 500;
+  flex: 1 1 100%;
 }
 
 .badge {
@@ -176,5 +182,13 @@
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 480px) {
+  .certName {
+    flex: 1 1 auto;
+  }
+  .certRow {
+    align-items: center;
   }
 }

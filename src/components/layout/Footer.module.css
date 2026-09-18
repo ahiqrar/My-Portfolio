@@ -179,6 +179,7 @@ a.contactItem:hover {
   align-items: center;
   padding-top: 2rem;
   border-top: 1px solid #1f1f1f;
+  padding-bottom: 2rem; /* space for mobile fab */
 }
 
 .copyright {
@@ -201,8 +202,8 @@ a.contactItem:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   border-radius: 8px;
   background-color: transparent;
   border: 1px solid #27272a;
@@ -211,9 +212,11 @@ a.contactItem:hover {
   transition: all 0.2s ease;
 }
 
-.backToTopInline:hover {
-  color: var(--primary-color);
-  border-color: var(--primary-color);
+@media (hover: hover) and (pointer: fine) {
+  .backToTopInline:hover {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
 }
 
 /* --- Floating Back To Top Button --- */
@@ -238,11 +241,13 @@ a.contactItem:hover {
   animation: fadeIn 0.3s ease forwards;
 }
 
-.floatingBackToTop:hover {
-  background-color: rgba(59, 130, 246, 0.1);
-  border-color: var(--primary-color);
-  color: var(--primary-color);
-  transform: translateY(-3px);
+@media (hover: hover) and (pointer: fine) {
+  .floatingBackToTop:hover {
+    background-color: rgba(59, 130, 246, 0.1);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+  }
 }
 
 @keyframes fadeIn {
@@ -274,7 +279,7 @@ a.contactItem:hover {
   }
   
   .bottomBar {
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: flex-start;
     gap: 1.5rem;
   }

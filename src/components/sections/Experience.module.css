@@ -64,13 +64,15 @@
   background-color: #0d0d0d;
   border: 1px solid #1f1f1f;
   border-radius: 12px;
-  padding: 1.75rem;
+  padding: clamp(1.25rem, 4vw, 1.75rem);
   flex-grow: 1;
   transition: border-color 0.2s ease;
 }
 
-.jobCard:hover {
-  border-color: var(--primary-color);
+@media (hover: hover) and (pointer: fine) {
+  .jobCard:hover {
+    border-color: var(--primary-color);
+  }
 }
 
 .jobHeader {
@@ -91,7 +93,7 @@
 
 .role {
   color: #ffffff;
-  font-size: 1.25rem;
+  font-size: clamp(1.1rem, 3vw, 1.25rem);
   font-weight: 600;
   margin: 0;
 }
@@ -112,7 +114,7 @@
 
 .company {
   color: var(--primary-color);
-  font-size: 1.05rem;
+  font-size: clamp(1rem, 2vw, 1.05rem);
   font-weight: 500;
   margin: 0 0 0.5rem 0;
 }
@@ -151,12 +153,15 @@
   font-weight: 500;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .timelineItem {
     gap: 1rem;
   }
   .jobHeader {
     flex-direction: column;
     gap: 0.5rem;
+  }
+  .timelineMarker {
+    min-width: 16px;
   }
 }
