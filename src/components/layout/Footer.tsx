@@ -83,6 +83,8 @@ const Footer = () => {
         top: element.offsetTop - 80,
         behavior: prefersReducedMotion ? 'auto' : 'smooth'
       });
+      const newPath = id === SectionId.Home ? '/' : `/${id}`;
+      window.history.pushState(null, '', newPath);
     }
   };
 
@@ -119,7 +121,7 @@ const Footer = () => {
               {footerConfig.navLinks.map((link) => (
                 <a 
                   key={link.id} 
-                  href={`#${link.id}`} 
+                  href={link.id === SectionId.Home ? '/' : `/${link.id}`} 
                   onClick={(e) => scrollToSection(link.id, e)}
                   className={`${styles.navLink} ${activeSection === link.id ? styles.activeNavLink : ''}`}
                 >
