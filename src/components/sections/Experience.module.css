@@ -1,83 +1,162 @@
-.experienceSection {
-  background-color: transparent;
+.sectionHeader {
+  margin-bottom: 4rem;
+  max-width: 800px;
 }
 
-.experienceGrid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
+.subtitle {
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
-@media (min-width: 768px) {
-  .experienceGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.title {
+  font-size: 2.5rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
 }
 
-.experienceCard {
+.underline {
+  width: 40px;
+  height: 4px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+
+.timelineContainer {
   display: flex;
   flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+}
+
+.timelineItem {
+  display: flex;
   gap: 1.5rem;
 }
 
-.cardHeader {
+.timelineMarker {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 1.2rem;
+  min-width: 24px;
 }
 
-.icon {
-  color: var(--secondary-color);
-  flex-shrink: 0;
+.timelineDot {
+  width: 14px;
+  height: 14px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  margin-top: 0.5rem;
+  z-index: 1;
+}
+
+.timelineLine {
+  width: 2px;
+  background-color: #1f2937; /* Dark grayish blue */
+  flex-grow: 1;
+  margin-top: 0.5rem;
+}
+
+.jobCard {
+  background-color: #0d0d0d;
+  border: 1px solid #1f1f1f;
+  border-radius: 12px;
+  padding: 1.75rem;
+  flex-grow: 1;
+  transition: border-color 0.2s ease;
+}
+
+.jobCard:hover {
+  border-color: var(--primary-color);
+}
+
+.jobHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.jobHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .role {
+  color: #ffffff;
   font-size: 1.25rem;
-  color: var(--text-color);
-  margin-bottom: 0.2rem;
+  font-weight: 600;
+  margin: 0;
 }
 
-.company {
-  font-size: 1rem;
-  color: var(--text-muted);
+.internshipTag {
+  font-size: 0.75rem;
+  color: #a1a1aa;
+  background-color: #1f1f1f;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
   font-weight: 500;
 }
 
 .duration {
+  color: #71717a;
   font-size: 0.9rem;
-  color: var(--accent-color);
+}
+
+.company {
+  color: var(--primary-color);
+  font-size: 1.05rem;
   font-weight: 500;
-  background: rgba(6, 182, 212, 0.1);
-  padding: 0.4rem 1rem;
-  border-radius: 2rem;
-  display: inline-block;
-  align-self: flex-start;
-  border: 1px solid rgba(6, 182, 212, 0.2);
+  margin: 0 0 0.5rem 0;
+}
+
+.summary {
+  color: #a1a1aa;
+  font-size: 0.95rem;
+  margin: 0 0 1rem 0;
 }
 
 .responsibilities {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin: 0 0 1.5rem 0;
+  color: #d4d4d8;
+  font-size: 0.95rem;
+  line-height: 1.7;
 }
 
 .responsibilities li {
-  position: relative;
-  padding-left: 1.5rem;
-  color: #d1d5db;
-  font-size: 0.95rem;
-  line-height: 1.6;
+  margin-bottom: 0.5rem;
 }
 
-.responsibilities li::before {
-  content: '▹';
-  position: absolute;
-  left: 0;
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.techChip {
   color: var(--primary-color);
-  font-weight: bold;
+  background: rgba(59, 130, 246, 0.1);
+  font-size: 0.8rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+@media (max-width: 640px) {
+  .timelineItem {
+    gap: 1rem;
+  }
+  .jobHeader {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 }

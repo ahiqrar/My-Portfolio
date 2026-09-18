@@ -4,6 +4,7 @@ export const SectionId = {
   Experience: 'experience',
   Skills: 'skills',
   Education: 'education',
+  Projects: 'projects',
   Contact: 'contact',
 } as const;
 
