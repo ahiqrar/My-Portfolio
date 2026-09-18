@@ -67,7 +67,6 @@ export const navLinks = [
   { id: SectionId.Home, label: 'Home' },
   { id: SectionId.About, label: 'About' },
   { id: SectionId.Experience, label: 'Experience' },
-  { id: SectionId.Projects, label: 'Projects' },
   { id: SectionId.Skills, label: 'Skills' },
   { id: SectionId.Education, label: 'Education' },
   { id: SectionId.Contact, label: 'Contact' },

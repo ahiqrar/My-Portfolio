@@ -199,7 +199,7 @@ const Hero = () => {
             <button onClick={scrollToContact} className={`btn ${styles.primaryBtn} ${styles.magnetic}`}>
               Let's Talk <ArrowRight size={18} className={styles.arrowIcon} />
             </button>
-            <a href="/Iqrar_Ahmed_CV.pdf" target="_blank" rel="noopener noreferrer" className={`btn ${styles.secondaryBtn} ${styles.magnetic}`}>
+            <a href="/Iqrar_Ahmed_CV.pdf" download="Iqrar_Ahmed_CV.pdf" target="_blank" rel="noopener noreferrer" className={`btn ${styles.secondaryBtn} ${styles.magnetic}`}>
               Resume <Download size={18} />
             </a>
           </div>
